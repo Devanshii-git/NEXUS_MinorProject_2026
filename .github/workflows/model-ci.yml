@@ -1,0 +1,75 @@
+name: Model CI/CD to AWS
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ "main" ]
+    paths:
+      - 'model/**'
+      - 'requirements.txt'
+      - '.github/workflows/model-ci.yml'
+
+env:
+  AWS_REGION: ap-south-1               
+  ECR_REPOSITORY: sutrava-nlp     
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    outputs:
+      registry: ${{ steps.login-ecr.outputs.registry }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Build, tag, and push image to Amazon ECR
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          IMAGE_TAG: ${{ github.sha }}
+        run: |
+          # The model docker build command needs to run from the root directory 
+          # so it can access requirements.txt
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -t $ECR_REGISTRY/$ECR_REPOSITORY:latest -f model/Dockerfile .
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
+
+  deploy:
+    needs: build-and-push
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to EC2 via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        env:
+          ECR_REGISTRY: ${{ needs.build-and-push.outputs.registry }}
+          AWS_REGION: ${{ env.AWS_REGION }}
+          ECR_REPOSITORY: ${{ env.ECR_REPOSITORY }}
+        with:
+          # Note: We use MODEL_EC2_HOST so you can deploy this to your larger, high-capacity instance
+          host: ${{ secrets.MODEL_EC2_HOST }}
+          username: ${{ secrets.EC2_USERNAME }}
+          key: ${{ secrets.MODEL_EC2_SSH_KEY }}
+          envs: ECR_REGISTRY,AWS_REGION,ECR_REPOSITORY
+          script: |
+            # Authenticate Docker to Amazon ECR on the EC2 instance
+            aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $ECR_REGISTRY
+            
+            # Pull the latest image
+            docker pull $ECR_REGISTRY/$ECR_REPOSITORY:latest
+            
+            # Stop and remove the existing container if it's running
+            docker stop sutrava-model-app || true
+            docker rm sutrava-model-app || true
+            
+            # Run the new container (Removed the restart loop since the model script runs and exits)
+            docker run -d --name sutrava-model-app $ECR_REGISTRY/$ECR_REPOSITORY:latest
