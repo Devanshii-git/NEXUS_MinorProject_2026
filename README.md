@@ -1,6 +1,6 @@
 <div align="center">
   <h1>Sutrava</h1>
-  <p><strong>NEXUS_MinorProject_2026</strong></p>
+  <p><strong>Built By Team NEXUS</strong></p>
   <p><em>An AI-Driven System for Automated Requirements Engineering from Unstructured Stakeholder Communication.</em></p>
 
   <p align="center">
