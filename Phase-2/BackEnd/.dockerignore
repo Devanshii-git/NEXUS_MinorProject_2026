@@ -1,6 +1,0 @@
-.git
-target/
-*.pem
-*.env
-*.p12
-src/main/resources/application-secrets.properties        ← never bake secrets into image
