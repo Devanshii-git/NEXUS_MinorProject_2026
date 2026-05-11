@@ -1,0 +1,32 @@
+# =============================================
+# AI-based Requirements Engineering Pipeline
+# Core Dependencies
+# =============================================
+
+# --- PyTorch (CPU version; replace with CUDA variant for GPU) ---
+torch>=2.0.0
+torchvision>=0.15.0
+
+# --- HuggingFace Transformers & Datasets ---
+transformers>=4.30.0
+datasets>=2.14.0
+
+# --- spaCy NLP Framework ---
+spacy>=3.5.0
+spacy-transformers>=1.3.0
+
+# --- Machine Learning Utilities ---
+scikit-learn>=1.3.0
+matplotlib>=3.7.0
+
+# --- Data Handling ---
+pandas>=2.0.0
+
+# --- Phase 5: Sentence Embeddings for Clustering ---
+sentence-transformers>=2.2.0
+
+# --- Phase 7: Summarization (uses transformers, already listed above) ---
+# (no extra dependency needed — uses HuggingFace pipeline)
+
+# --- Phase 6d: LLM Auditor (optional, for priority validation) ---
+openai>=1.0.0

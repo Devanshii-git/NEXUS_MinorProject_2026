@@ -1,0 +1,61 @@
+sentence,label
+"Users must be able to reset passwords.",1
+"Good morning everyone.",0
+"We should improve login speed.",1
+"The meeting is scheduled for tomorrow.",0
+"Users must login using OTP.",1
+"Hello team.",0
+"The system shall encrypt all stored passwords.",1
+"Let's grab lunch at noon.",0
+"Admin users should be able to delete accounts.",1
+"Happy Friday!",0
+"The application must support multi-language.",1
+"Can you send me the notes?",0
+"The dashboard shall refresh every 30 seconds.",1
+"See you at the standup.",0
+"Payment processing must complete within 2 seconds.",1
+"Please update the spreadsheet.",0
+"The system should log all failed login attempts.",1
+"I will be on vacation next week.",0
+"Users need to be able to export reports as PDF.",1
+"Reminder: team outing this Saturday.",0
+"The API must handle 1000 concurrent requests.",1
+"Thanks for the update.",0
+"Customers should receive email notifications on order status.",1
+"Let me know when you're free.",0
+"The mobile app must work offline.",1
+"What time is the meeting?",0
+"The search functionality must return results within 1 second.",1
+"Great job on the presentation.",0
+"Two-factor authentication should be mandatory for admin users.",1
+"I'll send the agenda shortly.",0
+"The system must comply with GDPR regulations.",1
+"Please review the attached document.",0
+"Users should be able to filter search results by date.",1
+"The office will be closed on Monday.",0
+"The platform must support integration with Slack.",1
+"Did anyone complete the survey?",0
+"Session timeout should occur after 15 minutes of inactivity.",1
+"Looking forward to the holiday break.",0
+"Error messages should be user-friendly and descriptive.",1
+"Who is bringing the cake?",0
+"The system shall provide role-based access control.",1
+"Please check your inbox.",0
+"File uploads must be limited to 10MB.",1
+"Lunch is at 12:30 today.",0
+"The system should auto-save user progress every 5 minutes.",1
+"Don't forget to clock in.",0
+"Database backups must run daily at midnight.",1
+"Have a great weekend.",0
+"The application must be accessible to screen readers.",1
+"Can someone fix the printer?",0
+"The checkout flow must support multiple payment methods.",1
+"I updated the wiki page.",0
+"Users should see a loading indicator during data fetch.",1
+"Is the conference room available?",0
+"The notification system must support push notifications.",1
+"I need help with my timesheet.",0
+"Audit logs should record all admin actions.",1
+"The team dinner is at 7 PM.",0
+"The system must support single sign-on via OAuth 2.0.",1
+"Please RSVP by Thursday.",0

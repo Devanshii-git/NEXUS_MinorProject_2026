@@ -1,0 +1,15 @@
+{
+  "label_distribution": {
+    "ACTOR": 5354,
+    "ACTION": 5905,
+    "FEATURE": 5892,
+    "CONSTRAINT": 5175,
+    "QUALITY": 5032,
+    "PRIORITY": 4993
+  },
+  "errors": {
+    "overlap_errors": 0,
+    "boundary_errors": 0
+  },
+  "ambiguous_spans_count": 9
+}

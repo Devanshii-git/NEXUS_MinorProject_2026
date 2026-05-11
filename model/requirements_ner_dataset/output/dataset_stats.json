@@ -1,0 +1,27 @@
+{
+  "total_samples": 5905,
+  "source_group_distribution": {
+    "custom_generated": 4993,
+    "formal_fr": 100,
+    "pure_fr": 546,
+    "formal_nfr": 100,
+    "pure_nfr": 166
+  },
+  "label_distribution": {
+    "ACTOR": 5354,
+    "ACTION": 5905,
+    "FEATURE": 5892,
+    "CONSTRAINT": 5175,
+    "QUALITY": 5032,
+    "PRIORITY": 4993
+  },
+  "avg_entities_per_sample": 5.479,
+  "samples_with_multiple_entities": 5394,
+  "samples_with_priority": 4993,
+  "conflicting_phrase_count": 9,
+  "split_sizes": {
+    "train": 4722,
+    "dev": 591,
+    "test": 592
+  }
+}

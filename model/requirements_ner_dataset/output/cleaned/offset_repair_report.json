@@ -1,0 +1,249 @@
+{
+  "summary": {
+    "total_samples": 5905,
+    "valid_samples": 5905,
+    "removed_samples": 0,
+    "samples_with_entities": 5905,
+    "total_entities_after_cleaning": 32351,
+    "invalid_entities_before_cleaning": 0,
+    "invalid_entity_percentage": 0.0,
+    "corrected_entities": 0,
+    "removed_entities": 0,
+    "label_distribution": {
+      "ACTOR": 5354,
+      "ACTION": 5905,
+      "FEATURE": 5892,
+      "CONSTRAINT": 5175,
+      "QUALITY": 5032,
+      "PRIORITY": 4993
+    }
+  },
+  "common_error_patterns": {},
+  "split_summary": {
+    "train": {
+      "samples": 4722,
+      "entities": 25883,
+      "removed_samples": 0,
+      "output": "C:\\Users\\Devanshi\\Desktop\\model\\requirements_ner_dataset\\output\\cleaned\\requirements_ner_train.json"
+    },
+    "dev": {
+      "samples": 591,
+      "entities": 3237,
+      "removed_samples": 0,
+      "output": "C:\\Users\\Devanshi\\Desktop\\model\\requirements_ner_dataset\\output\\cleaned\\requirements_ner_dev.json"
+    },
+    "test": {
+      "samples": 592,
+      "entities": 3231,
+      "removed_samples": 0,
+      "output": "C:\\Users\\Devanshi\\Desktop\\model\\requirements_ner_dataset\\output\\cleaned\\requirements_ner_test.json"
+    }
+  },
+  "sample_corrected_entries": [
+    {
+      "text": "Quick msg: not sure why this keeps happening. admin needs to process the notifications service under heavy load. Also make sure it is responsive. This is high priority.",
+      "verified_entities": [
+        {
+          "start": 46,
+          "end": 51,
+          "label": "ACTOR",
+          "text": "admin"
+        },
+        {
+          "start": 61,
+          "end": 68,
+          "label": "ACTION",
+          "text": "process"
+        },
+        {
+          "start": 73,
+          "end": 94,
+          "label": "FEATURE",
+          "text": "notifications service"
+        },
+        {
+          "start": 95,
+          "end": 111,
+          "label": "CONSTRAINT",
+          "text": "under heavy load"
+        },
+        {
+          "start": 134,
+          "end": 144,
+          "label": "QUALITY",
+          "text": "responsive"
+        },
+        {
+          "start": 154,
+          "end": 167,
+          "label": "PRIORITY",
+          "text": "high priority"
+        }
+      ]
+    },
+    {
+      "text": "Teams chat: backend service needs to monitor the notifications service every day. Also make sure it is robust. This is P1.",
+      "verified_entities": [
+        {
+          "start": 12,
+          "end": 27,
+          "label": "ACTOR",
+          "text": "backend service"
+        },
+        {
+          "start": 37,
+          "end": 44,
+          "label": "ACTION",
+          "text": "monitor"
+        },
+        {
+          "start": 49,
+          "end": 70,
+          "label": "FEATURE",
+          "text": "notifications service"
+        },
+        {
+          "start": 71,
+          "end": 80,
+          "label": "CONSTRAINT",
+          "text": "every day"
+        },
+        {
+          "start": 103,
+          "end": 109,
+          "label": "QUALITY",
+          "text": "robust"
+        },
+        {
+          "start": 119,
+          "end": 121,
+          "label": "PRIORITY",
+          "text": "P1"
+        }
+      ]
+    },
+    {
+      "text": "Meeting note: not sure why this keeps happening. QA team needs to handle the search feature before next release. Also make sure it is responsive. This is ASAP.",
+      "verified_entities": [
+        {
+          "start": 49,
+          "end": 56,
+          "label": "ACTOR",
+          "text": "QA team"
+        },
+        {
+          "start": 66,
+          "end": 72,
+          "label": "ACTION",
+          "text": "handle"
+        },
+        {
+          "start": 77,
+          "end": 91,
+          "label": "FEATURE",
+          "text": "search feature"
+        },
+        {
+          "start": 92,
+          "end": 111,
+          "label": "CONSTRAINT",
+          "text": "before next release"
+        },
+        {
+          "start": 134,
+          "end": 144,
+          "label": "QUALITY",
+          "text": "responsive"
+        },
+        {
+          "start": 154,
+          "end": 158,
+          "label": "PRIORITY",
+          "text": "ASAP"
+        }
+      ]
+    },
+    {
+      "text": "Email: client needs to deploy the payment gateway within SLA. Also make sure it is fast. This is high priority.",
+      "verified_entities": [
+        {
+          "start": 7,
+          "end": 13,
+          "label": "ACTOR",
+          "text": "client"
+        },
+        {
+          "start": 23,
+          "end": 29,
+          "label": "ACTION",
+          "text": "deploy"
+        },
+        {
+          "start": 34,
+          "end": 49,
+          "label": "FEATURE",
+          "text": "payment gateway"
+        },
+        {
+          "start": 50,
+          "end": 60,
+          "label": "CONSTRAINT",
+          "text": "within SLA"
+        },
+        {
+          "start": 83,
+          "end": 87,
+          "label": "QUALITY",
+          "text": "fast"
+        },
+        {
+          "start": 97,
+          "end": 110,
+          "label": "PRIORITY",
+          "text": "high priority"
+        }
+      ]
+    },
+    {
+      "text": "Meeting note: users are complaining. frontend app needs to generate the dashboard under heavy load. Also make sure it is scalable. This is high priority.",
+      "verified_entities": [
+        {
+          "start": 37,
+          "end": 49,
+          "label": "ACTOR",
+          "text": "frontend app"
+        },
+        {
+          "start": 59,
+          "end": 67,
+          "label": "ACTION",
+          "text": "generate"
+        },
+        {
+          "start": 72,
+          "end": 81,
+          "label": "FEATURE",
+          "text": "dashboard"
+        },
+        {
+          "start": 82,
+          "end": 98,
+          "label": "CONSTRAINT",
+          "text": "under heavy load"
+        },
+        {
+          "start": 121,
+          "end": 129,
+          "label": "QUALITY",
+          "text": "scalable"
+        },
+        {
+          "start": 139,
+          "end": 152,
+          "label": "PRIORITY",
+          "text": "high priority"
+        }
+      ]
+    }
+  ]
+}

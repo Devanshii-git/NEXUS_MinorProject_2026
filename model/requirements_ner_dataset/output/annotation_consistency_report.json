@@ -1,0 +1,42 @@
+{
+  "conflicting_phrases": {
+    "process": [
+      "ACTION",
+      "FEATURE"
+    ],
+    "monitor": [
+      "ACTION",
+      "FEATURE"
+    ],
+    "api": [
+      "ACTOR",
+      "FEATURE"
+    ],
+    "view": [
+      "ACTION",
+      "FEATURE"
+    ],
+    "display": [
+      "ACTION",
+      "FEATURE"
+    ],
+    "access": [
+      "ACTION",
+      "FEATURE"
+    ],
+    "report": [
+      "ACTION",
+      "FEATURE"
+    ],
+    "customers": [
+      "ACTOR",
+      "FEATURE"
+    ],
+    "interface": [
+      "ACTOR",
+      "FEATURE"
+    ]
+  },
+  "invalid_record_count": 0,
+  "manual_audit_sample_size": 500
+}

@@ -1,0 +1,21 @@
+sentence,label
+"The system shall send a confirmation email after registration.",1
+"Hope you are doing well.",0
+"Users must be able to change their profile picture.",1
+"See the attached meeting minutes.",0
+"The platform should support dark mode.",1
+"Can we reschedule the call?",0
+"API responses must include pagination metadata.",1
+"Happy birthday!",0
+"The application must validate email format on signup.",1
+"I will be late today.",0
+"Users should be able to bookmark favorite items.",1
+"Please share the drive link.",0
+"The system must generate monthly usage reports.",1
+"Let's discuss this offline.",0
+"Password complexity rules must be enforced.",1
+"The printer is out of paper.",0
+"The system should support bulk data import via CSV.",1
+"Anyone up for coffee?",0
+"Real-time collaboration features must be available in the editor.",1
+"Reminder to submit your hours.",0
