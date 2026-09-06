@@ -155,6 +155,56 @@ class LLMProvider(ABC):
         """Human-readable provider name for logging."""
 
 
+class GeminiProvider(LLMProvider):
+    """Gemini provider using official google-generativeai SDK."""
+
+    def __init__(
+        self,
+        api_key: str | None = None,
+        model: str = "gemini-1.5-flash",
+        temperature: float = 0.1,
+    ):
+        try:
+            import google.generativeai as genai
+        except ImportError:
+            raise ImportError(
+                "google-generativeai SDK not installed. Run: pip install google-generativeai"
+            )
+
+        self._api_key = api_key or os.environ.get("GEMINI_API_KEY", "")
+        if not self._api_key:
+            raise ValueError(
+                "Gemini API key required. Pass api_key= or set "
+                "GEMINI_API_KEY environment variable."
+            )
+
+        genai.configure(api_key=self._api_key)
+        
+        self._model = genai.GenerativeModel(
+            model_name=model,
+            system_instruction="You are an expert requirements engineering analyst. Respond only with valid JSON."
+        )
+        self._model_name = model
+        self._temperature = temperature
+
+    def generate(self, prompt: str) -> str:
+        try:
+            import google.generativeai as genai
+            response = self._model.generate_content(
+                prompt,
+                generation_config=genai.types.GenerationConfig(
+                    temperature=self._temperature,
+                )
+            )
+            return response.text.strip()
+        except Exception as e:
+            raise RuntimeError(f"Gemini generation failed: {e}")
+
+    @property
+    def provider_name(self) -> str:
+        return f"gemini/{self._model_name}"
+
+
 class OpenAIProvider(LLMProvider):
     """OpenAI GPT provider (default)."""
 
@@ -246,6 +296,8 @@ class LLMAuditor:
     ):
         if provider is not None:
             self._provider = provider
+        elif "gemini" in model.lower():
+            self._provider = GeminiProvider(api_key=api_key, model=model)
         else:
             self._provider = OpenAIProvider(api_key=api_key, model=model)
 
