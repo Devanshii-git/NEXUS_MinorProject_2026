@@ -102,6 +102,33 @@ class RequirementClusterer:
             except Exception:
                 pass
 
+        # --- Step 4.5: Save configuration for the paper ---
+        import json, os
+        try:
+            with open("clustering_log.json", "w") as f:
+                json.dump({
+                    "algorithm": "HDBSCAN + UMAP",
+                    "umap_params": {
+                        "n_neighbors": int(n_neighbors),
+                        "min_dist": 0.05,
+                        "n_components": int(n_components),
+                        "metric": "cosine",
+                        "random_state": 42
+                    },
+                    "hdbscan_params": {
+                        "min_cluster_size": int(min_cluster_size),
+                        "metric": "euclidean",
+                        "cluster_selection_method": "eom"
+                    },
+                    "evaluation_metrics": {
+                        "silhouette_score": float(sil_score),
+                        "total_clusters": int(n_clusters),
+                        "noise_points": int(np.sum(labels == -1))
+                    }
+                }, f, indent=4)
+        except Exception:
+            pass
+
         # --- Step 5: Group requirements by cluster --------------------------
         cluster_map: dict[int, list[dict[str, Any]]] = defaultdict(list)
         noise_counter = max(labels) + 1 if len(labels) > 0 else 1

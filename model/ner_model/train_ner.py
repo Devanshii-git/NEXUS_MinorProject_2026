@@ -49,6 +49,29 @@ def train_ner(
     result = subprocess.run(cmd, cwd=PROJECT_ROOT)
     if result.returncode == 0:
         print(f"\n✓ Training complete. Best model saved to: {output_dir}/model-best")
+        
+        # Save training configuration and best checkpoint info for the paper
+        import json
+        best_meta_path = os.path.join(output_dir, "model-best", "meta.json")
+        log_file = os.path.join(output_dir, "training_log.json")
+        
+        if os.path.exists(best_meta_path):
+            with open(best_meta_path, "r", encoding="utf-8") as f:
+                meta = json.load(f)
+            
+            perf = meta.get("performance", {})
+            best_f1 = perf.get("ents_f", 0.0)
+            best_step = perf.get("step", 0)
+            
+            with open(log_file, "w", encoding="utf-8") as f:
+                json.dump({
+                    "best_validation_f1": best_f1,
+                    "best_step": best_step,
+                    "selection_reason": "Highest validation F1 score across all epochs",
+                    "config_path": config_path
+                }, f, indent=4)
+            print(f"  ↳ Log saved to {log_file} (Best Step: {best_step}, F1: {best_f1:.4f})")
+            
     else:
         print(f"\n✗ Training failed with exit code {result.returncode}")
         sys.exit(result.returncode)

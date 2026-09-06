@@ -109,11 +109,25 @@ def train(
 
         if metrics["f1"] > best_f1:
             best_f1 = metrics["f1"]
+            best_epoch = epoch
             os.makedirs(output_dir, exist_ok=True)
             save_model(model, tokenizer, output_dir)
-            print(f"  ↳ New best F1 = {best_f1:.4f} — model saved.")
+            print(f"  ↳ New best F1 = {best_f1:.4f} — model saved (Epoch {best_epoch}).")
 
-    print("\n✓ Training complete.")
+    # Save the training configuration and best F1 score for the paper
+    import json
+    log_file = os.path.join(output_dir, "training_log.json")
+    with open(log_file, "w") as f:
+        json.dump({
+            "best_validation_f1": best_f1,
+            "best_epoch": best_epoch if 'best_epoch' in locals() else 0,
+            "total_epochs": epochs,
+            "batch_size": batch_size,
+            "learning_rate": lr,
+            "max_length": max_length
+        }, f, indent=4)
+
+    print(f"\n✓ Training complete. Log saved to {log_file}")
 
 
 # Evaluation helper
